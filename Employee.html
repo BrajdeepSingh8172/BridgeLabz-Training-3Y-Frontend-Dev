@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Payroll Form</title>
+</head>
+
+<body>
+    <h1>Employee Payroll Form</h1>
+
+    <form action="/submit" method="post">
+
+        <!-- Name -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Name" required>
+        <br><br>
+
+        <!-- Profile Image -->
+        <label for="profile">Profile Image:</label>
+
+        <input type="radio" name="profile" id="profile1" value="profile1">
+        <img src="profile1.png" alt="Profile 1" width="30" height="30">
+
+        <input type="radio" name="profile" id="profile2" value="profile2">
+        <img src="profile2.png" alt="Profile 2" width="30" height="30">
+
+        <input type="radio" name="profile" id="profile3" value="profile3">
+        <img src="profile3.png" alt="Profile 3" width="30" height="30">
+        <br><br>
+
+        <!-- Gender -->
+        <label for="gender">Gender:</label>
+
+        <input type="radio" name="gender" id="male" value="male">
+        <label for="male">Male</label>
+
+        <input type="radio" name="gender" id="female" value="female">
+        <label for="female">Female</label>
+        <br><br>
+
+        <!-- Department -->
+        <label for="department">Department:</label>
+
+        <input type="checkbox" name="department" id="hr" value="HR">
+        <label for="hr">HR</label>
+
+        <input type="checkbox" name="department" id="sales" value="Sales">
+        <label for="sales">Sales</label>
+
+        <input type="checkbox" name="department" id="finance" value="Finance">
+        <label for="finance">Finance</label>
+
+        <input type="checkbox" name="department" id="others" value="Others">
+        <label for="others">Others</label>
+        <br><br>
+
+        <!-- Salary -->
+        <label for="salary">Salary:</label>
+        <select name="salary" id="salary" placeholder="Select Salary" required>
+            <option value="" hidden disabled selected>Select Salary</option>
+            <option value="30000">30,000</option>
+            <option value="40000">40,000</option>
+            <option value="50000">50,000</option>
+            <option value="60000">60,000</option>
+            <option value="70000">70,000</option>
+            <option value="80000">80,000</option>
+        </select>
+        <br><br>
+
+        <!-- Start Date -->
+        <label for="startdate">Start Date:</label>
+        <input type="date" name="startdate" id="startdate" required>
+        <br><br>
+
+        <!-- Notes -->
+        <label for="notes">Notes:</label>
+        <textarea name="notes" id="notes" rows="4" cols="50"></textarea>
+        <br><br>
+
+        <!-- Cancel, Submit, Reset Buttons -->
+        <input type="button" value="Cancel">
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+        <br>
+
+    </form>
+</body>
+
+</html>

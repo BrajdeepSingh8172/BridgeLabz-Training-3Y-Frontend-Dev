@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Iframe</title>
+</head>
+<body>
+<h1>Submit the Form</h1>
+
+    <!-- Form that submits to result.html inside the iframe -->
+    <form action="result.html" method="get" target="resultFrame">
+        <label for="username">Enter your name:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Result:</h2>
+    <!-- Iframe that will load result.html -->
+    <iframe name="resultFrame" width="500" height="100" title="Result Frame">
+        Your browser does not support iframes.
+    </iframe>
+</body>
+</html>
