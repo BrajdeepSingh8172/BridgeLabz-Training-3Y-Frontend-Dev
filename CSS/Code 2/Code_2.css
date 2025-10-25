@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #f8fafc;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #0f172a;
+  color: #38bdf8;
+  text-align: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #f8fafc;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #38bdf8;
+}
+
+.section {
+  padding: 80px 10%;
+  text-align: center;
+  font-size: 1.1rem;
+  border-top: 4px solid rgba(255,255,255,0.2);
+}
+
+.section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.history {
+  background: linear-gradient(135deg, #1e293b, #334155, #0f172a);
+}
+
+ 
+.culture {
+  background-image: url("https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1500&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.landmarks {
+  background: radial-gradient(circle at center, #38bdf8, #0ea5e9, #0f172a);
+}
+
+.food {
+  background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1500&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+footer {
+  background-color: #0f172a;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  border-top: 2px solid #38bdf8;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .section {
+    padding: 60px 5%;
+    font-size: 1rem;
+  }
+
+  .section h2 {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f9fafb;
+  color: #0f172a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.pricing-table {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  align-items: stretch;
+  width: 80%;
+}
+
+.plan {
+  flex: 1;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 30px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.plan:hover {
+  transform: scale(1.05);
+  background-color: #e0f2fe;
+  border-color: #0ea5e9;
+}
+
+.plan h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+.plan ul {
+  list-style: none;
+  margin-bottom: 25px;
+}
+
+.plan ul li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #0ea5e9;
+  margin: 20px 0;
+}
+
+.plan a {
+  text-decoration: none;
+  background-color: #0ea5e9;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.plan a:hover {
+  background-color: #0284c7;
+}
+
+.popular {
+  border: 3px solid #facc15;
+  background-color: #fef9c3;
+}
