@@ -1,0 +1,67 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+}
+
+.animation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.moving-box {
+  width: 80px;
+  height: 80px;
+  background-color: #0078d7;
+  border-radius: 10px;
+  animation: moveBox 3s ease-in-out infinite alternate;
+}
+
+@keyframes moveBox {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(150px); }
+}
+
+.bouncing-ball {
+  width: 70px;
+  height: 70px;
+  background-color: #ff5722;
+  border-radius: 50%;
+  animation: bounce 1.5s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-100px); }
+}
+
+.color-text {
+  font-size: 24px;
+  font-weight: bold;
+  animation: colorChange 4s ease-in-out infinite alternate;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes colorChange {
+  0% { color: #0078d7; }
+  25% { color: #ff5722; }
+  50% { color: #4caf50; }
+  75% { color: #9c27b0; }
+  100% { color: #e91e63; }
+}
