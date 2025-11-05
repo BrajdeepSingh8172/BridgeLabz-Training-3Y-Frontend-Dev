@@ -1,0 +1,39 @@
+/* Q4 - Shadows and Depth Effect */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1faee;
+  color: #222;
+}
+
+header, footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+  text-shadow: 1px 1px 3px gray;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}

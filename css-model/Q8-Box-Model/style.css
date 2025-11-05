@@ -1,0 +1,31 @@
+/* Q8 - Box Model Exploration */
+body {
+  margin: 0;
+  background: #e9ecef;
+  font-family: Arial, sans-serif;
+}
+
+header, footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Visual layers of the box model */
+.box {
+  background: lightcyan;
+  padding: 20px;
+  border: 5px solid blue;
+  margin: 20px;
+  text-align: center;
+  width: 200px;
+  box-sizing: border-box;
+}

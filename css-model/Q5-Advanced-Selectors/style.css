@@ -1,0 +1,29 @@
+/* Q5 - Advanced CSS Selectors */
+
+/* Attribute selector */
+a[href^="https"] {
+  color: green;
+  text-decoration: none;
+}
+
+/* Pseudo-class selector */
+li:nth-child(odd) {
+  background: #f0f0f0;
+}
+
+/* Pseudo-element */
+p::before {
+  content: "→ ";
+  color: blue;
+}
+
+/* :focus pseudo-class */
+input:focus {
+  border: 2px solid dodgerblue;
+  outline: none;
+}
+
+/* Combinator: descendant */
+main p strong {
+  color: crimson;
+}

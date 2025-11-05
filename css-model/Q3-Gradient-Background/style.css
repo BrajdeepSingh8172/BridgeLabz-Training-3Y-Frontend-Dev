@@ -1,0 +1,46 @@
+/* Q3 - Gradient Background Webpage */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+header, footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+header { top: 0; }
+footer { bottom: 0; }
+
+main {
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+/* Gradient sections */
+.linear {
+  height: 100vh;
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.radial {
+  height: 100vh;
+  background: radial-gradient(circle, #89f7fe, #66a6ff);
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

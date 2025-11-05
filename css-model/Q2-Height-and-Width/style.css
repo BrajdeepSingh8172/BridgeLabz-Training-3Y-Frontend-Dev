@@ -1,0 +1,54 @@
+/* Q2 - Height and Width Practice */
+body {
+  margin: 0;
+  background: #e3f2fd;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header, footer {
+  background: #0d47a1;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.box1 {
+  height: 200px;
+  width: 150px;
+  background: #0077b6;
+}
+
+.box2 {
+  width: 50%;
+  min-height: 100px;
+  max-width: 300px;
+  background: #00b4d8;
+}
+
+.box3 {
+  height: 30vh;
+  width: 12em;
+  background: #0096c7;
+  overflow: hidden;
+}
+ 

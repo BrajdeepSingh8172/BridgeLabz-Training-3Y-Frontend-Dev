@@ -1,0 +1,29 @@
+/* Q7 - Typography and Text Styling */
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  background: #fefae0;
+}
+
+header, footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+article {
+  margin: 50px;
+  text-align: justify;
+  letter-spacing: 0.5px;
+}
+
+/* Inline text styling */
+mark { background: yellow; color: black; }
+strong { color: darkred; }
+em { color: darkblue; }
+
+/* Pseudo-elements */
+p::first-letter { font-size: 2em; color: teal; }
+p::first-line { font-weight: bold; }

@@ -1,0 +1,43 @@
+/* Q9 - Outline and Focus Styling Form */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7ede2;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header, footer {
+  text-align: center;
+  background: #333;
+  color: white;
+  padding: 10px;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea {
+  padding: 10px;
+  border-radius: 5px;
+  outline: 2px solid gray;
+  outline-offset: 3px;
+  border: none;
+  width: 250px;
+}
+
+input:focus, textarea:focus {
+  outline-color: dodgerblue;
+  box-shadow: 0 0 5px rgba(30,144,255,0.5);
+}

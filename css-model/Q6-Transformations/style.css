@@ -1,0 +1,38 @@
+/* Q6 - CSS Transformations */
+body {
+  margin: 0;
+  background: #f8f9fa;
+  font-family: Arial, sans-serif;
+}
+
+header, footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 80vh;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background: #0077b6;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+  border-radius: 8px;
+}
+
+.rotate:hover { transform: rotate(20deg); }
+.scale:hover { transform: scale(1.3); }
+.translate:hover { transform: translate(20px, -10px); }
+.skew:hover { transform: skew(15deg, 5deg); }
