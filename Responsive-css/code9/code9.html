@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Design Principles Summary</title>
+    <link rel="stylesheet" href="code9.css">
+</head>
+<body>
+    <section class="principles-container">
+        <div class="principle-box">
+            <h2>Fluid Layouts</h2>
+            <p>Use relative units like percentages or vw/vh to make layouts adapt to screen sizes.</p>
+            <code>width: 80%; max-width: 1200px;</code>
+        </div>
+        <div class="principle-box">
+            <h2>Flexible Media</h2>
+            <p>Ensure images and videos resize properly within containers.</p>
+            <code>img { max-width: 100%; height: auto; }</code>
+        </div>
+        <div class="principle-box">
+            <h2>Breakpoints</h2>
+            <p>Use media queries to adjust layouts and fonts at specific screen widths.</p>
+            <code>@media (max-width: 600px) { body { font-size: 14px; } }</code>
+        </div>
+    </section>
+</body>
+</html>
