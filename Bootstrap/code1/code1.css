@@ -1,0 +1,12 @@
+/* Custom styling for Company Landing Page */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, p {
+  color: #212529;
+}
+
+footer {
+  font-size: 0.9rem;
+}

@@ -1,0 +1,12 @@
+/* Task Tracker Custom Styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.list-group-item {
+  transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f1f1f1;
+}

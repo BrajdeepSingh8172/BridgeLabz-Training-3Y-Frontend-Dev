@@ -1,0 +1,28 @@
+/* Custom Theme Variables */
+:root {
+  --bs-primary: #4b49ac; /* Custom purple-blue theme */
+  --bs-font-sans-serif: 'Poppins', sans-serif;
+}
+
+body {
+  font-family: var(--bs-font-sans-serif);
+  background-color: #f8f9fa;
+}
+
+.card img {
+  transition: transform 0.3s ease;
+}
+
+.card img:hover {
+  transform: scale(1.03);
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+  background-color: #3f3d99;
+  border-color: #3f3d99;
+}
