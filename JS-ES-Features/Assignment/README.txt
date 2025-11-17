@@ -1,0 +1,1 @@
+Assignment 3 JS files. Run each file with node to see console output. All output uses console.log().
