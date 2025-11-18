@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q4: Custom Form Builder</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .builder-section {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    #generatedForm {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .output-section {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 30px;
+      display: none;
+    }
+
+    .output-section.show {
+      display: block;
+    }
+
+    .output-section h3 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .output-data {
+      background: white;
+      padding: 15px;
+      border-radius: 5px;
+      border-left: 4px solid #28a745;
+    }
+
+    .output-data pre {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      color: #333;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .info {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      border-left: 4px solid #2196f3;
+    }
+
+    .info p {
+      color: #1976d2;
+      margin: 5px 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔧 Custom Form Builder</h1>
+
+    <div class="builder-section">
+      <h2>Form Configuration</h2>
+      <div class="info">
+        <p><strong>This demo uses a predefined form configuration.</strong></p>
+        <p>The FormBuilder class dynamically generates forms from field objects.</p>
+      </div>
+      <button onclick="generateForm()">Generate Form</button>
+    </div>
+
+    <div id="generatedForm"></div>
+
+    <div class="output-section" id="outputSection">
+      <h3>📋 Form Data Output</h3>
+      <div class="output-data">
+        <pre id="formDataOutput"></pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * Q4: Custom Form Builder
+     * FormBuilder class that generates forms dynamically from field objects
+     */
+
+    class FormBuilder {
+      constructor(fields) {
+        this.fields = fields;
+        this.formElement = null;
+      }
+
+      // Method to create the form dynamically using innerHTML
+      createForm(containerId) {
+        const container = document.getElementById(containerId);
+        
+        if (!container) {
+          console.error('Container not found');
+          return;
+        }
+
+        // Build form HTML
+        let formHTML = '<form id="dynamicForm">';
+        formHTML += '<h2>Generated Form</h2>';
+
+        this.fields.forEach((field, index) => {
+          formHTML += `<div class="form-group">`;
+          formHTML += `<label for="field_${index}">${field.label}</label>`;
+
+          // Create appropriate input based on type
+          if (field.type === 'textarea') {
+            formHTML += `<textarea id="field_${index}" name="${field.name || field.label.toLowerCase().replace(/\s+/g, '_')}" placeholder="${field.placeholder || ''}"></textarea>`;
+          } else if (field.type === 'select') {
+            formHTML += `<select id="field_${index}" name="${field.name || field.label.toLowerCase().replace(/\s+/g, '_')}">`;
+            formHTML += `<option value="">-- Select ${field.label} --</option>`;
+            
+            if (field.options) {
+              field.options.forEach(option => {
+                formHTML += `<option value="${option}">${option}</option>`;
+              });
+            }
+            
+            formHTML += `</select>`;
+          } else {
+            formHTML += `<input type="${field.type}" id="field_${index}" name="${field.name || field.label.toLowerCase().replace(/\s+/g, '_')}" placeholder="${field.placeholder || ''}" ${field.required ? 'required' : ''}>`;
+          }
+
+          formHTML += `</div>`;
+        });
+
+        formHTML += '<button type="submit">Submit</button>';
+        formHTML += '</form>';
+
+        // Insert form into container
+        container.innerHTML = formHTML;
+
+        // Get reference to the created form
+        this.formElement = document.getElementById('dynamicForm');
+
+        // Add submit event listener
+        this.formElement.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const data = this.getFormData();
+          this.displayFormData(data);
+        });
+      }
+
+      // Method to get all form data as an object
+      getFormData() {
+        if (!this.formElement) {
+          console.error('Form not created yet');
+          return {};
+        }
+
+        const formData = {};
+        const formElements = this.formElement.elements;
+
+        // Iterate through all form elements
+        for (let i = 0; i < formElements.length; i++) {
+          const element = formElements[i];
+          
+          // Skip submit button and elements without name
+          if (element.type !== 'submit' && element.name) {
+            formData[element.name] = element.value;
+          }
+        }
+
+        return formData;
+      }
+
+      // Method to display form data
+      displayFormData(data) {
+        const outputSection = document.getElementById('outputSection');
+        const formDataOutput = document.getElementById('formDataOutput');
+
+        formDataOutput.textContent = JSON.stringify(data, null, 2);
+        outputSection.classList.add('show');
+
+        // Also log to console
+        console.log('Form Data:', data);
+
+        // Scroll to output
+        outputSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // Define form fields configuration
+    const formFields = [
+      {
+        type: 'text',
+        label: 'Username',
+        placeholder: 'Enter your username',
+        required: true
+      },
+      {
+        type: 'email',
+        label: 'Email Address',
+        placeholder: 'your.email@example.com',
+        required: true
+      },
+      {
+        type: 'password',
+        label: 'Password',
+        placeholder: 'Enter a strong password',
+        required: true
+      },
+      {
+        type: 'tel',
+        label: 'Phone Number',
+        placeholder: '1234567890'
+      },
+      {
+        type: 'select',
+        label: 'Country',
+        options: ['India', 'USA', 'UK', 'Canada', 'Australia']
+      },
+      {
+        type: 'date',
+        label: 'Date of Birth'
+      },
+      {
+        type: 'textarea',
+        label: 'Bio',
+        placeholder: 'Tell us about yourself...'
+      }
+    ];
+
+    let formBuilder = null;
+
+    // Function to generate the form
+    function generateForm() {
+      formBuilder = new FormBuilder(formFields);
+      formBuilder.createForm('generatedForm');
+      
+      console.log('Form generated successfully!');
+      
+      // Scroll to form
+      document.getElementById('generatedForm').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'nearest'
+      });
+    }
+  </script>
+</body>
+</html>

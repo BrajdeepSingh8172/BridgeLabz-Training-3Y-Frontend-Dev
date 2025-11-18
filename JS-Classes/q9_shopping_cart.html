@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q9: Shopping Cart Total</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .cart-section {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .cart-items {
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .item-info {
+      flex: 1;
+    }
+
+    .item-name {
+      font-weight: 600;
+      color: #333;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .item-details {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .item-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #667eea;
+    }
+
+    .item-remove {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-left: 15px;
+      transition: background 0.3s ease;
+    }
+
+    .item-remove:hover {
+      background: #c82333;
+    }
+
+    .add-item-form {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .add-item-form input {
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .add-item-form button {
+      padding: 10px 20px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .add-item-form button:hover {
+      background: #218838;
+    }
+
+    .coupon-section {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .coupon-input-wrapper {
+      display: flex;
+      gap: 10px;
+    }
+
+    .coupon-input-wrapper input {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .coupon-input-wrapper button {
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+    }
+
+    .coupon-input-wrapper button:hover {
+      transform: translateY(-2px);
+    }
+
+    .coupon-message {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .coupon-message.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+    }
+
+    .coupon-message.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      display: block;
+    }
+
+    .total-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 25px;
+      border-radius: 10px;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      font-size: 16px;
+    }
+
+    .total-row.subtotal {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .total-row.discount {
+      color: #90ee90;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .total-row.final {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 10px;
+      padding-top: 15px;
+      border-top: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .empty-cart {
+      text-align: center;
+      padding: 40px;
+      color: #777;
+    }
+
+    .empty-cart-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .add-item-form {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .item-remove {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🛒 Shopping Cart</h1>
+
+    <div class="cart-section">
+      <h2>Add Item to Cart</h2>
+      <form class="add-item-form" id="addItemForm">
+        <input type="text" id="itemName" placeholder="Item name" required>
+        <input type="number" id="itemPrice" placeholder="Price" step="0.01" min="0" required>
+        <input type="number" id="itemQuantity" placeholder="Quantity" min="1" value="1" required>
+        <button type="submit">Add Item</button>
+      </form>
+
+      <h2>Cart Items</h2>
+      <div class="cart-items" id="cartItems">
+        <div class="empty-cart">
+          <div class="empty-cart-icon">🛍️</div>
+          <p>Your cart is empty. Add some items!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-section">
+      <h2>Apply Coupon Code</h2>
+      <div class="coupon-section">
+        <div class="coupon-input-wrapper">
+          <input type="text" id="couponInput" placeholder="Enter coupon code (e.g., SAVE20, DISC10)">
+          <button type="button" id="applyCoupon">Apply Coupon</button>
+        </div>
+        <div class="coupon-message" id="couponMessage"></div>
+        <p style="margin-top: 15px; font-size: 13px; color: #777;">
+          Valid format: SAVE## or DISC## (where ## is the discount percentage)
+        </p>
+      </div>
+    </div>
+
+    <div class="cart-section total-section">
+      <h2 style="color: white; border-bottom-color: rgba(255, 255, 255, 0.3);">Order Summary</h2>
+      <div class="total-row subtotal">
+        <span>Subtotal:</span>
+        <span id="subtotal">₹0.00</span>
+      </div>
+      <div class="total-row discount" id="discountRow" style="display: none;">
+        <span>Discount <span id="discountPercent"></span>:</span>
+        <span id="discountAmount">-₹0.00</span>
+      </div>
+      <div class="total-row final">
+        <span>Total:</span>
+        <span id="finalTotal">₹0.00</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * Q9: Shopping Cart Total
+     * Uses Cart class to manage items and RegExp to validate coupon codes
+     */
+
+    // Cart class definition
+    class Cart {
+      constructor() {
+        this.items = [];
+        this.coupon = null;
+      }
+
+      // Add item to cart
+      addItem(name, price, quantity) {
+        const item = {
+          id: Date.now() + Math.random(),
+          name: name,
+          price: parseFloat(price),
+          quantity: parseInt(quantity)
+        };
+        
+        this.items.push(item);
+        console.log('Item added:', item);
+        return item;
+      }
+
+      // Remove item from cart
+      removeItem(id) {
+        const index = this.items.findIndex(item => item.id === id);
+        if (index !== -1) {
+          const removed = this.items.splice(index, 1)[0];
+          console.log('Item removed:', removed);
+          return true;
+        }
+        return false;
+      }
+
+      // Calculate subtotal
+      getSubtotal() {
+        return this.items.reduce((total, item) => {
+          return total + (item.price * item.quantity);
+        }, 0);
+      }
+
+      // Calculate total with discount
+      getTotal() {
+        const subtotal = this.getSubtotal();
+        
+        if (this.coupon && this.coupon.isValid) {
+          const discount = (subtotal * this.coupon.percent) / 100;
+          return subtotal - discount;
+        }
+        
+        return subtotal;
+      }
+
+      // Get discount amount
+      getDiscount() {
+        const subtotal = this.getSubtotal();
+        
+        if (this.coupon && this.coupon.isValid) {
+          return (subtotal * this.coupon.percent) / 100;
+        }
+        
+        return 0;
+      }
+
+      // Apply coupon with RegExp validation
+      applyCoupon(code) {
+        // Coupon format: SAVE## or DISC## (e.g., SAVE20, DISC10)
+        const couponRegex = /^(SAVE|DISC)(\d{1,2})$/i;
+        const match = code.toUpperCase().match(couponRegex);
+
+        if (match) {
+          const type = match[1];
+          const percent = parseInt(match[2]);
+
+          // Validate percentage range
+          if (percent > 0 && percent <= 100) {
+            this.coupon = {
+              code: code.toUpperCase(),
+              type: type,
+              percent: percent,
+              isValid: true
+            };
+            
+            console.log('Coupon applied:', this.coupon);
+            return {
+              success: true,
+              message: `✅ Coupon "${this.coupon.code}" applied! You get ${percent}% off.`,
+              percent: percent
+            };
+          } else {
+            return {
+              success: false,
+              message: '❌ Invalid discount percentage. Must be between 1 and 100.'
+            };
+          }
+        } else {
+          return {
+            success: false,
+            message: '❌ Invalid coupon format. Use SAVE## or DISC## (e.g., SAVE20, DISC10)'
+          };
+        }
+      }
+
+      // Remove coupon
+      removeCoupon() {
+        this.coupon = null;
+        console.log('Coupon removed');
+      }
+    }
+
+    // Create cart instance
+    const cart = new Cart();
+
+    // Get DOM elements
+    const addItemForm = document.getElementById('addItemForm');
+    const itemNameInput = document.getElementById('itemName');
+    const itemPriceInput = document.getElementById('itemPrice');
+    const itemQuantityInput = document.getElementById('itemQuantity');
+    const cartItemsContainer = document.getElementById('cartItems');
+    const couponInput = document.getElementById('couponInput');
+    const applyCouponBtn = document.getElementById('applyCoupon');
+    const couponMessage = document.getElementById('couponMessage');
+    const subtotalElement = document.getElementById('subtotal');
+    const discountRow = document.getElementById('discountRow');
+    const discountPercent = document.getElementById('discountPercent');
+    const discountAmount = document.getElementById('discountAmount');
+    const finalTotalElement = document.getElementById('finalTotal');
+
+    // Add item to cart
+    addItemForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = itemNameInput.value.trim();
+      const price = itemPriceInput.value;
+      const quantity = itemQuantityInput.value;
+
+      if (name && price && quantity) {
+        cart.addItem(name, price, quantity);
+        updateCartDisplay();
+        
+        // Reset form
+        addItemForm.reset();
+        itemQuantityInput.value = 1;
+      }
+    });
+
+    // Apply coupon
+    applyCouponBtn.addEventListener('click', () => {
+      const code = couponInput.value.trim();
+      
+      if (!code) {
+        showCouponMessage('Please enter a coupon code', false);
+        return;
+      }
+
+      const result = cart.applyCoupon(code);
+      showCouponMessage(result.message, result.success);
+      
+      if (result.success) {
+        updateCartDisplay();
+        couponInput.value = '';
+      }
+    });
+
+    // Show coupon message
+    function showCouponMessage(message, isSuccess) {
+      couponMessage.textContent = message;
+      couponMessage.className = 'coupon-message ' + (isSuccess ? 'success' : 'error');
+    }
+
+    // Render cart items
+    function renderCartItems() {
+      if (cart.items.length === 0) {
+        cartItemsContainer.innerHTML = `
+          <div class="empty-cart">
+            <div class="empty-cart-icon">🛍️</div>
+            <p>Your cart is empty. Add some items!</p>
+          </div>
+        `;
+        return;
+      }
+
+      cartItemsContainer.innerHTML = cart.items.map(item => `
+        <div class="cart-item">
+          <div class="item-info">
+            <div class="item-name">${item.name}</div>
+            <div class="item-details">₹${item.price.toFixed(2)} × ${item.quantity}</div>
+          </div>
+          <div class="item-price">₹${(item.price * item.quantity).toFixed(2)}</div>
+          <button class="item-remove" onclick="removeCartItem(${item.id})">Remove</button>
+        </div>
+      `).join('');
+    }
+
+    // Remove cart item (global function for onclick)
+    window.removeCartItem = function(id) {
+      cart.removeItem(id);
+      updateCartDisplay();
+    };
+
+    // Update cart display
+    function updateCartDisplay() {
+      renderCartItems();
+      
+      const subtotal = cart.getSubtotal();
+      const discount = cart.getDiscount();
+      const total = cart.getTotal();
+
+      subtotalElement.textContent = `₹${subtotal.toFixed(2)}`;
+      finalTotalElement.textContent = `₹${total.toFixed(2)}`;
+
+      // Show/hide discount row
+      if (cart.coupon && cart.coupon.isValid && discount > 0) {
+        discountRow.style.display = 'flex';
+        discountPercent.textContent = `(${cart.coupon.percent}%)`;
+        discountAmount.textContent = `-₹${discount.toFixed(2)}`;
+      } else {
+        discountRow.style.display = 'none';
+      }
+
+      // Log cart state
+      console.log('Cart Summary:', {
+        items: cart.items.length,
+        subtotal: subtotal,
+        discount: discount,
+        total: total,
+        coupon: cart.coupon
+      });
+    }
+
+    // Add some sample items on load
+    cart.addItem('Laptop', 45000, 1);
+    cart.addItem('Wireless Mouse', 599, 2);
+    cart.addItem('USB Cable', 199, 3);
+    updateCartDisplay();
+
+    console.log('Shopping Cart System initialized');
+    console.log('Try coupons: SAVE20, DISC10, SAVE15, DISC25');
+  </script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q2: Student Form Validator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    input.valid {
+      border-color: #28a745;
+      background-color: #f0fff4;
+    }
+
+    input.invalid {
+      border-color: #dc3545;
+      background-color: #fff5f5;
+    }
+
+    .error-message {
+      color: #dc3545;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .success-message {
+      background-color: #28a745;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+      display: none;
+      text-align: center;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Registration Form</h1>
+    <form id="studentForm">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your full name">
+        <div class="error-message" id="nameError">Name should contain only alphabets</div>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" placeholder="example@domain.com">
+        <div class="error-message" id="emailError">Please enter a valid email address</div>
+      </div>
+
+      <!-- Phone Field -->
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" placeholder="Enter 10 digit phone number">
+        <div class="error-message" id="phoneError">Phone number must be exactly 10 digits</div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter strong password">
+        <div class="error-message" id="passwordError">Password must contain 1 uppercase, 1 number, and 1 special character</div>
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+
+    <div class="success-message" id="successMessage">
+      Registration successful! All fields are valid.
+    </div>
+  </div>
+
+  <script>
+    /**
+     * Q2: Student Form Validator
+     * Uses RegExp to validate form fields with real-time validation
+     */
+
+    // Regular Expressions for validation
+    const nameRegex = /^[A-Za-z\s]+$/; // Only alphabets and spaces
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Valid email format
+    const phoneRegex = /^\d{10}$/; // Exactly 10 digits
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // 1 uppercase, 1 number, 1 special char
+
+    // Get form elements
+    const form = document.getElementById('studentForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const passwordInput = document.getElementById('password');
+
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const phoneError = document.getElementById('phoneError');
+    const passwordError = document.getElementById('passwordError');
+
+    const successMessage = document.getElementById('successMessage');
+
+    // Validation function
+    function validateField(input, regex, errorElement) {
+      const value = input.value.trim();
+      
+      if (value === '') {
+        input.classList.remove('valid', 'invalid');
+        errorElement.classList.remove('show');
+        return false;
+      }
+
+      if (regex.test(value)) {
+        input.classList.remove('invalid');
+        input.classList.add('valid');
+        errorElement.classList.remove('show');
+        return true;
+      } else {
+        input.classList.remove('valid');
+        input.classList.add('invalid');
+        errorElement.classList.add('show');
+        return false;
+      }
+    }
+
+    // Real-time validation on input
+    nameInput.addEventListener('input', () => validateField(nameInput, nameRegex, nameError));
+    emailInput.addEventListener('input', () => validateField(emailInput, emailRegex, emailError));
+    phoneInput.addEventListener('input', () => validateField(phoneInput, phoneRegex, phoneError));
+    passwordInput.addEventListener('input', () => validateField(passwordInput, passwordRegex, passwordError));
+
+    // Form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Validate all fields
+      const isNameValid = validateField(nameInput, nameRegex, nameError);
+      const isEmailValid = validateField(emailInput, emailRegex, emailError);
+      const isPhoneValid = validateField(phoneInput, phoneRegex, phoneError);
+      const isPasswordValid = validateField(passwordInput, passwordRegex, passwordError);
+
+      // Check if all fields are valid
+      if (isNameValid && isEmailValid && isPhoneValid && isPasswordValid) {
+        successMessage.classList.add('show');
+        
+        // Log student data
+        console.log('Student Registered:', {
+          name: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          phone: phoneInput.value.trim(),
+          password: '***hidden***'
+        });
+
+        // Reset form after 2 seconds
+        setTimeout(() => {
+          form.reset();
+          successMessage.classList.remove('show');
+          nameInput.classList.remove('valid');
+          emailInput.classList.remove('valid');
+          phoneInput.classList.remove('valid');
+          passwordInput.classList.remove('valid');
+        }, 2000);
+      } else {
+        successMessage.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>
