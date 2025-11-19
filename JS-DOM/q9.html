@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>9. Form Submit Blocker</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="index.html" class="small">← Back to index</a>
+  <h2>9. Form Submit Blocker</h2>
+  <div class="card">
+    
+<form id="blockForm" novalidate>
+  <label>Name</label><input id="fName" required />
+  <div class="small" id="errName"></div>
+  <label>Email</label><input id="fEmail" required />
+  <div class="small" id="errEmail"></div>
+  <label>Password</label><input id="fPassword" type="password" required />
+  <div class="small" id="errPassword"></div>
+  <div style="margin-top:8px;"><button id="submitBtn">Submit</button></div>
+</form>
+<div id="submitMsg" class="hidden card"></div>
+
+  </div>
+  <script src="js/q9.js"></script>
+</body>
+</html>
