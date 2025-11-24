@@ -1,0 +1,84 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "email": "alice.johnson@company.com",
+      "department": "Engineering",
+      "position": "Senior Software Engineer",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "name": "Bob Smith",
+      "email": "bob.smith@company.com",
+      "department": "Marketing",
+      "position": "Marketing Manager",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "name": "Carol Davis",
+      "email": "carol.davis@company.com",
+      "department": "Engineering",
+      "position": "Frontend Developer",
+      "status": "inactive"
+    },
+    {
+      "id": 4,
+      "name": "David Wilson",
+      "email": "david.wilson@company.com",
+      "department": "Sales",
+      "position": "Sales Representative",
+      "status": "active"
+    },
+    {
+      "id": 5,
+      "name": "Emma Brown",
+      "email": "emma.brown@company.com",
+      "department": "HR",
+      "position": "HR Manager",
+      "status": "active"
+    },
+    {
+      "id": 6,
+      "name": "Frank Martinez",
+      "email": "frank.martinez@company.com",
+      "department": "Engineering",
+      "position": "Backend Developer",
+      "status": "inactive"
+    },
+    {
+      "id": 7,
+      "name": "Grace Lee",
+      "email": "grace.lee@company.com",
+      "department": "Design",
+      "position": "UX Designer",
+      "status": "active"
+    },
+    {
+      "id": 8,
+      "name": "Henry Taylor",
+      "email": "henry.taylor@company.com",
+      "department": "Finance",
+      "position": "Financial Analyst",
+      "status": "active"
+    },
+    {
+      "id": 9,
+      "name": "Isabel Anderson",
+      "email": "isabel.anderson@company.com",
+      "department": "Operations",
+      "position": "Operations Manager",
+      "status": "inactive"
+    },
+    {
+      "id": 10,
+      "name": "Jack Robinson",
+      "email": "jack.robinson@company.com",
+      "department": "Engineering",
+      "position": "DevOps Engineer",
+      "status": "active"
+    }
+  ]
+}

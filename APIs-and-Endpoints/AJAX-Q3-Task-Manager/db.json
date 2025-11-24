@@ -1,0 +1,94 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Complete project documentation",
+      "description": "Write comprehensive documentation for the new feature",
+      "priority": "high",
+      "completed": false,
+      "dueDate": "2024-12-01",
+      "assignee": "Alice Johnson"
+    },
+    {
+      "id": 2,
+      "title": "Fix login page bug",
+      "description": "Resolve the authentication issue on the login page",
+      "priority": "high",
+      "completed": false,
+      "dueDate": "2024-11-28",
+      "assignee": "Bob Smith"
+    },
+    {
+      "id": 3,
+      "title": "Update dependencies",
+      "description": "Update all npm packages to latest versions",
+      "priority": "medium",
+      "completed": true,
+      "dueDate": "2024-11-25",
+      "assignee": "Carol Davis"
+    },
+    {
+      "id": 4,
+      "title": "Design new landing page",
+      "description": "Create mockups for the new marketing landing page",
+      "priority": "medium",
+      "completed": false,
+      "dueDate": "2024-12-05",
+      "assignee": "Grace Lee"
+    },
+    {
+      "id": 5,
+      "title": "Code review for PR #234",
+      "description": "Review and approve the database optimization pull request",
+      "priority": "high",
+      "completed": true,
+      "dueDate": "2024-11-24",
+      "assignee": "David Wilson"
+    },
+    {
+      "id": 6,
+      "title": "Write unit tests",
+      "description": "Add unit tests for the user service module",
+      "priority": "medium",
+      "completed": false,
+      "dueDate": "2024-11-30",
+      "assignee": "Emma Brown"
+    },
+    {
+      "id": 7,
+      "title": "Refactor CSS styles",
+      "description": "Clean up and organize the stylesheet files",
+      "priority": "low",
+      "completed": false,
+      "dueDate": "2024-12-10",
+      "assignee": "Frank Martinez"
+    },
+    {
+      "id": 8,
+      "title": "Setup CI/CD pipeline",
+      "description": "Configure automated testing and deployment",
+      "priority": "high",
+      "completed": false,
+      "dueDate": "2024-12-03",
+      "assignee": "Jack Robinson"
+    },
+    {
+      "id": 9,
+      "title": "Optimize database queries",
+      "description": "Improve performance of slow database queries",
+      "priority": "medium",
+      "completed": true,
+      "dueDate": "2024-11-26",
+      "assignee": "Henry Taylor"
+    },
+    {
+      "id": 10,
+      "title": "Update README file",
+      "description": "Add installation and setup instructions",
+      "priority": "low",
+      "completed": true,
+      "dueDate": "2024-11-22",
+      "assignee": "Isabel Anderson"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Emma Wilson",
+      "email": "emma.wilson@example.com",
+      "role": "Product Manager",
+      "avatar": "https://i.pravatar.cc/150?img=1",
+      "department": "Product"
+    },
+    {
+      "id": 2,
+      "name": "James Chen",
+      "email": "james.chen@example.com",
+      "role": "Senior Developer",
+      "avatar": "https://i.pravatar.cc/150?img=12",
+      "department": "Engineering"
+    },
+    {
+      "id": 3,
+      "name": "Sophia Martinez",
+      "email": "sophia.martinez@example.com",
+      "role": "UX Designer",
+      "avatar": "https://i.pravatar.cc/150?img=5",
+      "department": "Design"
+    },
+    {
+      "id": 4,
+      "name": "Michael Brown",
+      "email": "michael.brown@example.com",
+      "role": "DevOps Engineer",
+      "avatar": "https://i.pravatar.cc/150?img=13",
+      "department": "Engineering"
+    },
+    {
+      "id": 5,
+      "name": "Olivia Taylor",
+      "email": "olivia.taylor@example.com",
+      "role": "Marketing Lead",
+      "avatar": "https://i.pravatar.cc/150?img=9",
+      "department": "Marketing"
+    },
+    {
+      "id": 6,
+      "name": "Daniel Kim",
+      "email": "daniel.kim@example.com",
+      "role": "Sales Manager",
+      "avatar": "https://i.pravatar.cc/150?img=14",
+      "department": "Sales"
+    }
+  ],
+  "orders": [
+    {
+      "id": 101,
+      "userId": 1,
+      "orderNumber": "ORD-2024-001",
+      "product": "Premium Subscription",
+      "amount": 299.99,
+      "status": "completed",
+      "date": "2024-01-15"
+    },
+    {
+      "id": 102,
+      "userId": 3,
+      "orderNumber": "ORD-2024-002",
+      "product": "Design Tools Bundle",
+      "amount": 149.99,
+      "status": "pending",
+      "date": "2024-01-18"
+    },
+    {
+      "id": 103,
+      "userId": 2,
+      "orderNumber": "ORD-2024-003",
+      "product": "Developer License",
+      "amount": 499.99,
+      "status": "completed",
+      "date": "2024-01-20"
+    },
+    {
+      "id": 104,
+      "userId": 5,
+      "orderNumber": "ORD-2024-004",
+      "product": "Marketing Analytics",
+      "amount": 199.99,
+      "status": "shipped",
+      "date": "2024-01-22"
+    },
+    {
+      "id": 105,
+      "userId": 4,
+      "orderNumber": "ORD-2024-005",
+      "product": "Cloud Infrastructure",
+      "amount": 899.99,
+      "status": "completed",
+      "date": "2024-01-25"
+    },
+    {
+      "id": 106,
+      "userId": 6,
+      "orderNumber": "ORD-2024-006",
+      "product": "CRM Software",
+      "amount": 349.99,
+      "status": "pending",
+      "date": "2024-01-28"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Premium Subscription",
+      "category": "Software",
+      "price": 299.99,
+      "stock": 50,
+      "rating": 4.8,
+      "image": "https://via.placeholder.com/150/4A90E2/ffffff?text=Premium"
+    },
+    {
+      "id": 2,
+      "name": "Design Tools Bundle",
+      "category": "Software",
+      "price": 149.99,
+      "stock": 100,
+      "rating": 4.6,
+      "image": "https://via.placeholder.com/150/9013FE/ffffff?text=Design"
+    },
+    {
+      "id": 3,
+      "name": "Developer License",
+      "category": "Software",
+      "price": 499.99,
+      "stock": 30,
+      "rating": 4.9,
+      "image": "https://via.placeholder.com/150/50E3C2/ffffff?text=Dev"
+    },
+    {
+      "id": 4,
+      "name": "Marketing Analytics",
+      "category": "Software",
+      "price": 199.99,
+      "stock": 75,
+      "rating": 4.5,
+      "image": "https://via.placeholder.com/150/F5A623/ffffff?text=Marketing"
+    },
+    {
+      "id": 5,
+      "name": "Cloud Infrastructure",
+      "category": "Services",
+      "price": 899.99,
+      "stock": 20,
+      "rating": 4.7,
+      "image": "https://via.placeholder.com/150/7ED321/ffffff?text=Cloud"
+    },
+    {
+      "id": 6,
+      "name": "CRM Software",
+      "category": "Software",
+      "price": 349.99,
+      "stock": 45,
+      "rating": 4.4,
+      "image": "https://via.placeholder.com/150/D0021B/ffffff?text=CRM"
+    }
+  ]
+}

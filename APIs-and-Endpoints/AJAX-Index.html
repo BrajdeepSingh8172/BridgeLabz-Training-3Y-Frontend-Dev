@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Assignments | HTTP Request Methods</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+
+        .description {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .project-header {
+            margin-bottom: 15px;
+        }
+
+        .project-number {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-title {
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .project-tech {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+
+        .project-features {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .feature-item {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-item::before {
+            content: '✓';
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .server-note {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .server-note h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .command-box {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .port-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .port-item {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .port-number {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .port-project {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 3px;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 AJAX Assignments</h1>
+            <p class="subtitle">Mastering HTTP Request Methods</p>
+            <div class="description">
+                Explore 6 practical projects demonstrating different HTTP request techniques:<br>
+                jQuery AJAX, XMLHttpRequest, Fetch API with Promise.all, and Axios
+            </div>
+        </header>
+
+        <div class="server-note">
+            <h2>⚙️ Server Setup Instructions</h2>
+            <p>Each project uses JSON Server running on a different port. To run a project:</p>
+            <div class="command-box">cd AJAX-Q#-Project-Name<br>json-server --watch db.json --port PORT_NUMBER</div>
+            
+            <div class="port-list">
+                <div class="port-item">
+                    <div class="port-number">Port 3001</div>
+                    <div class="port-project">Live Search</div>
+                </div>
+                <div class="port-item">
+                    <div class="port-number">Port 3002</div>
+                    <div class="port-project">Employee Dashboard</div>
+                </div>
+                <div class="port-item">
+                    <div class="port-number">Port 3003</div>
+                    <div class="port-project">Task Manager</div>
+                </div>
+                <div class="port-item">
+                    <div class="port-number">Port 3004</div>
+                    <div class="port-project">Multi-API Dashboard</div>
+                </div>
+                <div class="port-item">
+                    <div class="port-number">Port 3005</div>
+                    <div class="port-project">College Timetable</div>
+                </div>
+                <div class="port-item">
+                    <div class="port-number">Port 3006</div>
+                    <div class="port-project">User Registration</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Q1: Live Search -->
+            <a href="AJAX-Q1-Live-Search/index.html" class="project-card">
+                <div class="project-icon">🔍</div>
+                <div class="project-header">
+                    <div class="project-number">Question 1</div>
+                    <h2 class="project-title">Live Search</h2>
+                    <span class="project-tech">jQuery AJAX</span>
+                </div>
+                <p class="project-description">
+                    Real-time product search with debouncing and query parameters
+                </p>
+                <div class="project-features">
+                    <div class="feature-item">Debounced search (300ms)</div>
+                    <div class="feature-item">Query parameter: ?q=value</div>
+                    <div class="feature-item">Loading states & empty states</div>
+                    <div class="feature-item">Product grid with images</div>
+                </div>
+            </a>
+
+            <!-- Q2: Employee Dashboard -->
+            <a href="AJAX-Q2-Employee-Dashboard/index.html" class="project-card">
+                <div class="project-icon">👥</div>
+                <div class="project-header">
+                    <div class="project-number">Question 2</div>
+                    <h2 class="project-title">Employee Dashboard</h2>
+                    <span class="project-tech">XMLHttpRequest + PATCH</span>
+                </div>
+                <p class="project-description">
+                    Toggle employee status with raw XMLHttpRequest and PATCH operations
+                </p>
+                <div class="project-features">
+                    <div class="feature-item">XMLHttpRequest GET/PATCH</div>
+                    <div class="feature-item">Toggle active/inactive status</div>
+                    <div class="feature-item">Optimistic UI updates</div>
+                    <div class="feature-item">Error handling with revert</div>
+                </div>
+            </a>
+
+            <!-- Q3: Task Manager -->
+            <a href="AJAX-Q3-Task-Manager/index.html" class="project-card">
+                <div class="project-icon">✅</div>
+                <div class="project-header">
+                    <div class="project-number">Question 3</div>
+                    <h2 class="project-title">Task Manager</h2>
+                    <span class="project-tech">jQuery AJAX + Query Params</span>
+                </div>
+                <p class="project-description">
+                    Filter tasks by priority and status with dynamic query parameters
+                </p>
+                <div class="project-features">
+                    <div class="feature-item">Priority filter (high/medium/low)</div>
+                    <div class="feature-item">Status filter (completed/pending)</div>
+                    <div class="feature-item">PATCH for task completion</div>
+                    <div class="feature-item">Real-time statistics</div>
+                </div>
+            </a>
+
+            <!-- Q4: Multi-API Dashboard -->
+            <a href="AJAX-Q4-Multi-API-Dashboard/index.html" class="project-card">
+                <div class="project-icon">🎯</div>
+                <div class="project-header">
+                    <div class="project-number">Question 4</div>
+                    <h2 class="project-title">Multi-API Dashboard</h2>
+                    <span class="project-tech">Fetch + Promise.all</span>
+                </div>
+                <p class="project-description">
+                    Load multiple endpoints simultaneously using Promise.all
+                </p>
+                <div class="project-features">
+                    <div class="feature-item">Promise.all for parallel loading</div>
+                    <div class="feature-item">Users, Orders, Products APIs</div>
+                    <div class="feature-item">Skeleton loaders</div>
+                    <div class="feature-item">Partial failure handling</div>
+                </div>
+            </a>
+
+            <!-- Q5: College Timetable -->
+            <a href="AJAX-Q5-College-Timetable/index.html" class="project-card">
+                <div class="project-icon">📚</div>
+                <div class="project-header">
+                    <div class="project-number">Question 5</div>
+                    <h2 class="project-title">College Timetable</h2>
+                    <span class="project-tech">Fetch API</span>
+                </div>
+                <p class="project-description">
+                    View class schedules filtered by day using Fetch API
+                </p>
+                <div class="project-features">
+                    <div class="feature-item">Day-based filtering (?day=Monday)</div>
+                    <div class="feature-item">Auto-select current day</div>
+                    <div class="feature-item">Color-coded class types</div>
+                    <div class="feature-item">"No classes today" empty state</div>
+                </div>
+            </a>
+
+            <!-- Q6: User Registration -->
+            <a href="AJAX-Q6-User-Registration/index.html" class="project-card">
+                <div class="project-icon">👤</div>
+                <div class="project-header">
+                    <div class="project-number">Question 6</div>
+                    <h2 class="project-title">User Registration</h2>
+                    <span class="project-tech">Axios</span>
+                </div>
+                <p class="project-description">
+                    Register users with duplicate email checking using Axios
+                </p>
+                <div class="project-features">
+                    <div class="feature-item">Axios GET for duplicate check</div>
+                    <div class="feature-item">Axios POST for registration</div>
+                    <div class="feature-item">Real-time email validation</div>
+                    <div class="feature-item">Live registered users list</div>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            <p>Built with ❤️ using jQuery, XMLHttpRequest, Fetch API, and Axios</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                Make sure JSON Server is installed: <code style="background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 4px;">npm install -g json-server</code>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

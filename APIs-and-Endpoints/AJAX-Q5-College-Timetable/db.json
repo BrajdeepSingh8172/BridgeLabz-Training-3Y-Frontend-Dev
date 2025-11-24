@@ -1,0 +1,157 @@
+{
+  "timetable": [
+    {
+      "id": 1,
+      "day": "Monday",
+      "time": "09:00 AM - 10:30 AM",
+      "subject": "Data Structures and Algorithms",
+      "professor": "Dr. Sarah Johnson",
+      "room": "CS-301",
+      "type": "Lecture"
+    },
+    {
+      "id": 2,
+      "day": "Monday",
+      "time": "10:45 AM - 12:15 PM",
+      "subject": "Database Management Systems",
+      "professor": "Prof. Michael Chen",
+      "room": "CS-205",
+      "type": "Lecture"
+    },
+    {
+      "id": 3,
+      "day": "Monday",
+      "time": "01:00 PM - 02:30 PM",
+      "subject": "Web Development Lab",
+      "professor": "Dr. Emily Brown",
+      "room": "LAB-101",
+      "type": "Lab"
+    },
+    {
+      "id": 4,
+      "day": "Monday",
+      "time": "02:45 PM - 04:15 PM",
+      "subject": "Computer Networks",
+      "professor": "Prof. David Wilson",
+      "room": "CS-402",
+      "type": "Lecture"
+    },
+    {
+      "id": 5,
+      "day": "Tuesday",
+      "time": "09:00 AM - 10:30 AM",
+      "subject": "Operating Systems",
+      "professor": "Dr. Robert Martinez",
+      "room": "CS-303",
+      "type": "Lecture"
+    },
+    {
+      "id": 6,
+      "day": "Tuesday",
+      "time": "10:45 AM - 12:15 PM",
+      "subject": "Software Engineering",
+      "professor": "Prof. Jennifer Taylor",
+      "room": "CS-210",
+      "type": "Lecture"
+    },
+    {
+      "id": 7,
+      "day": "Tuesday",
+      "time": "01:00 PM - 02:30 PM",
+      "subject": "Machine Learning",
+      "professor": "Dr. James Anderson",
+      "room": "CS-505",
+      "type": "Lecture"
+    },
+    {
+      "id": 8,
+      "day": "Wednesday",
+      "time": "09:00 AM - 10:30 AM",
+      "subject": "Data Structures Lab",
+      "professor": "Dr. Sarah Johnson",
+      "room": "LAB-102",
+      "type": "Lab"
+    },
+    {
+      "id": 9,
+      "day": "Wednesday",
+      "time": "10:45 AM - 12:15 PM",
+      "subject": "Cloud Computing",
+      "professor": "Prof. Lisa White",
+      "room": "CS-404",
+      "type": "Lecture"
+    },
+    {
+      "id": 10,
+      "day": "Wednesday",
+      "time": "01:00 PM - 02:30 PM",
+      "subject": "Artificial Intelligence",
+      "professor": "Dr. Kevin Lee",
+      "room": "CS-506",
+      "type": "Lecture"
+    },
+    {
+      "id": 11,
+      "day": "Thursday",
+      "time": "09:00 AM - 10:30 AM",
+      "subject": "Cybersecurity Fundamentals",
+      "professor": "Prof. Amanda Garcia",
+      "room": "CS-308",
+      "type": "Lecture"
+    },
+    {
+      "id": 12,
+      "day": "Thursday",
+      "time": "10:45 AM - 12:15 PM",
+      "subject": "Mobile App Development",
+      "professor": "Dr. Chris Martin",
+      "room": "CS-212",
+      "type": "Lecture"
+    },
+    {
+      "id": 13,
+      "day": "Thursday",
+      "time": "01:00 PM - 02:30 PM",
+      "subject": "Database Lab",
+      "professor": "Prof. Michael Chen",
+      "room": "LAB-103",
+      "type": "Lab"
+    },
+    {
+      "id": 14,
+      "day": "Thursday",
+      "time": "02:45 PM - 04:15 PM",
+      "subject": "Computer Graphics",
+      "professor": "Dr. Rachel Thompson",
+      "room": "CS-407",
+      "type": "Lecture"
+    },
+    {
+      "id": 15,
+      "day": "Friday",
+      "time": "09:00 AM - 10:30 AM",
+      "subject": "Theory of Computation",
+      "professor": "Prof. Daniel Harris",
+      "room": "CS-304",
+      "type": "Lecture"
+    },
+    {
+      "id": 16,
+      "day": "Friday",
+      "time": "10:45 AM - 12:15 PM",
+      "subject": "Blockchain Technology",
+      "professor": "Dr. Sophia Rodriguez",
+      "room": "CS-510",
+      "type": "Lecture"
+    },
+    {
+      "id": 17,
+      "day": "Friday",
+      "time": "01:00 PM - 02:30 PM",
+      "subject": "Project Work",
+      "professor": "Various",
+      "room": "PROJECT-ROOM",
+      "type": "Project"
+    }
+  ]
+}

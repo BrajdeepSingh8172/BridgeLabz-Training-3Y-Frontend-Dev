@@ -1,0 +1,84 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Wireless Bluetooth Headphones",
+      "price": 79.99,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop",
+      "category": "Electronics",
+      "description": "High-quality wireless headphones with active noise cancellation"
+    },
+    {
+      "id": 2,
+      "name": "Smart Watch Pro",
+      "price": 299.99,
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop",
+      "category": "Electronics",
+      "description": "Advanced fitness tracking and heart rate monitoring"
+    },
+    {
+      "id": 3,
+      "name": "Laptop Backpack",
+      "price": 49.99,
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=200&h=200&fit=crop",
+      "category": "Accessories",
+      "description": "Durable backpack with padded laptop compartment"
+    },
+    {
+      "id": 4,
+      "name": "Mechanical Gaming Keyboard",
+      "price": 129.99,
+      "image": "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=200&h=200&fit=crop",
+      "category": "Electronics",
+      "description": "RGB backlit mechanical keyboard with customizable keys"
+    },
+    {
+      "id": 5,
+      "name": "Wireless Mouse",
+      "price": 34.99,
+      "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=200&h=200&fit=crop",
+      "category": "Electronics",
+      "description": "Ergonomic wireless mouse with precision tracking"
+    },
+    {
+      "id": 6,
+      "name": "USB-C Hub Adapter",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=200&h=200&fit=crop",
+      "category": "Accessories",
+      "description": "7-in-1 USB-C hub with HDMI and SD card reader"
+    },
+    {
+      "id": 7,
+      "name": "Portable Phone Charger",
+      "price": 24.99,
+      "image": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=200&h=200&fit=crop",
+      "category": "Accessories",
+      "description": "20000mAh power bank with fast charging"
+    },
+    {
+      "id": 8,
+      "name": "Bluetooth Speaker",
+      "price": 59.99,
+      "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=200&h=200&fit=crop",
+      "category": "Electronics",
+      "description": "Waterproof portable speaker with 360° sound"
+    },
+    {
+      "id": 9,
+      "name": "Laptop Stand",
+      "price": 44.99,
+      "image": "https://images.unsplash.com/photo-1631891086822-d6ef46e1b6d0?w=200&h=200&fit=crop",
+      "category": "Accessories",
+      "description": "Adjustable aluminum laptop stand for better ergonomics"
+    },
+    {
+      "id": 10,
+      "name": "Webcam HD 1080p",
+      "price": 69.99,
+      "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=200&h=200&fit=crop",
+      "category": "Electronics",
+      "description": "Full HD webcam with built-in microphone"
+    }
+  ]
+}

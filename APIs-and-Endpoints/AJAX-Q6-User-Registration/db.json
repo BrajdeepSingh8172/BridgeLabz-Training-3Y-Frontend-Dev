@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "username": "alicej",
+      "phone": "+1-555-0101",
+      "registeredDate": "2024-01-10"
+    },
+    {
+      "id": 2,
+      "name": "Bob Smith",
+      "email": "bob.smith@example.com",
+      "username": "bobsmith",
+      "phone": "+1-555-0102",
+      "registeredDate": "2024-01-12"
+    },
+    {
+      "id": 3,
+      "name": "Carol Davis",
+      "email": "carol.davis@example.com",
+      "username": "carold",
+      "phone": "+1-555-0103",
+      "registeredDate": "2024-01-15"
+    },
+    {
+      "id": 4,
+      "name": "David Wilson",
+      "email": "david.wilson@example.com",
+      "username": "davidw",
+      "phone": "+1-555-0104",
+      "registeredDate": "2024-01-18"
+    },
+    {
+      "id": 5,
+      "name": "Emma Brown",
+      "email": "emma.brown@example.com",
+      "username": "emmab",
+      "phone": "+1-555-0105",
+      "registeredDate": "2024-01-20"
+    }
+  ]
+}
