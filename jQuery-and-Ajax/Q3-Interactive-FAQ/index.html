@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q3 - Interactive FAQ</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #185a9d;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .question {
+            background: #f8f9fa;
+            padding: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #333;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-right: 40px;
+        }
+
+        .question:hover {
+            background: #43cea2;
+            color: white;
+        }
+
+        .question:after {
+            content: "▼";
+            position: absolute;
+            right: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .question.active:after {
+            transform: rotate(180deg);
+        }
+
+        .answer {
+            display: none;
+            padding: 20px;
+            background: white;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .answer input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .answer input:focus {
+            outline: none;
+            border-color: #43cea2;
+        }
+
+        .highlighted-question {
+            background: #fff3cd !important;
+            border: 2px solid #ffc107 !important;
+        }
+
+        .info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: #1976d2;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        
+        <div class="info">
+            Click questions to toggle answers • Hover to change color • Double-click to collapse all
+        </div>
+
+        <!-- FAQ Item 1 -->
+        <div class="faq-item">
+            <div class="question">What are your business hours?</div>
+            <div class="answer">
+                We are open Monday through Friday, 9:00 AM to 6:00 PM EST. Weekend support is available via email only.
+                <input type="text" placeholder="Need more help? Type your question here...">
+            </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="faq-item">
+            <div class="question">How can I track my order?</div>
+            <div class="answer">
+                Once your order ships, you'll receive an email with a tracking number. You can use this number on our tracking page or the carrier's website to monitor your shipment.
+                <input type="text" placeholder="Enter your order number for quick lookup...">
+            </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="faq-item">
+            <div class="question">What is your return policy?</div>
+            <div class="answer">
+                We offer a 30-day return policy for most items. Products must be in original condition with tags attached. Return shipping is free for defective items.
+                <input type="text" placeholder="Have a return question? Ask here...">
+            </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="faq-item">
+            <div class="question">Do you ship internationally?</div>
+            <div class="answer">
+                Yes! We ship to over 50 countries worldwide. International shipping times vary by location, typically 7-21 business days. Customs fees may apply.
+                <input type="text" placeholder="Looking for a specific country? Enter it here...">
+            </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="faq-item">
+            <div class="question">How do I reset my password?</div>
+            <div class="answer">
+                Click on "Forgot Password" on the login page. Enter your email address, and we'll send you a secure link to reset your password. The link expires in 24 hours.
+                <input type="text" placeholder="Enter your email for password assistance...">
+            </div>
+        </div>
+
+        <!-- FAQ Item 6 -->
+        <div class="faq-item">
+            <div class="question">What payment methods do you accept?</div>
+            <div class="answer">
+                We accept all major credit cards (Visa, MasterCard, American Express), PayPal, Apple Pay, and Google Pay. All transactions are encrypted and secure.
+                <input type="text" placeholder="Have a payment question? Ask here...">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

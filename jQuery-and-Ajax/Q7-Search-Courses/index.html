@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q7 - Search Courses</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #11998e;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .search-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        #searchInput {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: #11998e;
+            box-shadow: 0 0 10px rgba(17, 153, 142, 0.2);
+        }
+
+        .btn {
+            background: #11998e;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0d7a6e;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .search-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .match-count {
+            font-weight: bold;
+            color: #11998e;
+            font-size: 1.1rem;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .course-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-color: #11998e;
+        }
+
+        .course-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .course-instructor {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .course-description {
+            color: #777;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .course-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #11998e;
+        }
+
+        .course-duration {
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .course-category {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .highlight {
+            background: #ffeb3b;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+            font-size: 1.2rem;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Online Learning Platform - Course Search</h1>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search courses by name, instructor, or category...">
+                <button class="btn" id="searchBtn">Search</button>
+                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+            </div>
+            <div class="search-info">
+                <span>Total Courses: <span id="totalCourses">0</span></span>
+                <span>Matching Courses: <span class="match-count" id="matchCount">0</span></span>
+            </div>
+        </div>
+
+        <div class="courses-grid" id="coursesGrid">
+            <!-- Course 1 -->
+            <div class="course-card" data-keywords="javascript programming web development frontend">
+                <div class="course-category">Web Development</div>
+                <div class="course-title">JavaScript Mastery</div>
+                <div class="course-instructor">By John Anderson</div>
+                <div class="course-description">
+                    Learn JavaScript from basics to advanced concepts. Master ES6+, async programming, and modern frameworks.
+                </div>
+                <div class="course-meta">
+                    <span class="course-price">$49.99</span>
+                    <span class="course-duration">⏱️ 12 hours</span>
+                </div>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="course-card" data-keywords="python data science machine learning ai">
+                <div class="course-category">Data Science</div>
+                <div class="course-title">Python for Data Science</div>
+                <div class="course-instructor">By Sarah Chen</div>
+                <div class="course-description">
+                    Comprehensive Python course covering pandas, numpy, data visualization, and machine learning basics.
+                </div>
+                <div class="course-meta">
+                    <span class="course-price">$59.99</span>
+                    <span class="course-duration">⏱️ 15 hours</span>
+                </div>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="course-card" data-keywords="react frontend javascript ui components">
+                <div class="course-category">Web Development</div>
+                <div class="course-title">React Complete Guide</div>
+                <div class="course-instructor">By Michael Roberts</div>
+                <div class="course-description">
+                    Build modern web applications with React. Learn hooks, context, Redux, and best practices.
+                </div>
+                <div class="course-meta">
+                    <span class="course-price">$54.99</span>
+                    <span class="course-duration">⏱️ 18 hours</span>
+                </div>
+            </div>
+
+            <!-- Course 4 -->
+            <div class="course-card" data-keywords="design ui ux figma adobe prototyping">
+                <div class="course-category">Design</div>
+                <div class="course-title">UI/UX Design Fundamentals</div>
+                <div class="course-instructor">By Emma Wilson</div>
+                <div class="course-description">
+                    Master the principles of user interface and user experience design. Learn Figma and Adobe XD.
+                </div>
+                <div class="course-meta">
+                    <span class="course-price">$44.99</span>
+                    <span class="course-duration">⏱️ 10 hours</span>
+                </div>
+            </div>
+
+            <!-- Course 5 -->
+            <div class="course-card" data-keywords="nodejs backend javascript api express">
+                <div class="course-category">Backend Development</div>
+                <div class="course-title">Node.js Backend Development</div>
+                <div class="course-instructor">By David Martinez</div>
+                <div class="course-description">
+                    Build scalable backend applications with Node.js, Express, MongoDB, and RESTful APIs.
+                </div>
+                <div class="course-meta">
+                    <span class="course-price">$52.99</span>
+                    <span class="course-duration">⏱️ 14 hours</span>
+                </div>
+            </div>
+
+            <!-- Course 6 -->
+            <div class="course-card" data-keywords="mobile android ios react native flutter">
+                <div class="course-category">Mobile Development</div>
+                <div class="course-title">Mobile App Development</div>
+                <div class="course-instructor">By Lisa Kim</div>
+                <div class="course-description">
+                    Create cross-platform mobile apps using React Native and Flutter. Deploy to iOS and Android.
+                </div>
+                <div class="course-meta">
+                    <span class="course-price">$64.99</span>
+                    <span class="course-duration">⏱️ 20 hours</span>
+                </div>
+            </div>
+
+            <!-- Course 7 -->
+            <div class="course-card" data-keywords="sql database mysql postgresql data">
+                <div class="course-category">Database</div>
+                <div class="course-title">SQL Database Mastery</div>
+                <div class="course-instructor">By Robert Taylor</div>
+                <div class="course-description">
+                    Master SQL queries, database design, optimization, and work with MySQL and PostgreSQL.
+                </div>
+                <div class="course-meta">
+                    <span class="course-price">$39.99</span>
+                    <span class="course-duration">⏱️ 8 hours</span>
+                </div>
+            </div>
+
+            <!-- Course 8 -->
+            <div class="course-card" data-keywords="aws cloud devops docker kubernetes">
+                <div class="course-category">Cloud & DevOps</div>
+                <div class="course-title">AWS Cloud Practitioner</div>
+                <div class="course-instructor">By Jennifer Lee</div>
+                <div class="course-description">
+                    Learn AWS services, cloud architecture, Docker, Kubernetes, and modern DevOps practices.
+                </div>
+                <div class="course-meta">
+                    <span class="course-price">$69.99</span>
+                    <span class="course-duration">⏱️ 16 hours</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-results hidden" id="noResults">
+            <div class="no-results-icon">🔍</div>
+            <div>No courses found matching your search.</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

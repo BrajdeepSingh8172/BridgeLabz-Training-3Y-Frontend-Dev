@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4 - Special Offer Banner</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #2c3e50;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .btn-success {
+            background: #2ecc71;
+        }
+
+        .btn-success:hover {
+            background: #27ae60;
+        }
+
+        .btn-warning {
+            background: #f39c12;
+        }
+
+        .btn-warning:hover {
+            background: #d68910;
+        }
+
+        .banners-container {
+            position: relative;
+            min-height: 300px;
+        }
+
+        .banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .banner h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .banner .code {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .banner-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .banner-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .banner-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .banner-4 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .banner-5 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .rotating-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: none;
+        }
+
+        .rotating-banner.active {
+            display: block;
+        }
+
+        .rotation-indicator {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Special Offer Banners</h1>
+
+        <div class="controls">
+            <button class="btn btn-danger" id="hideBanner1">Hide Banner 1</button>
+            <button class="btn btn-success" id="showBanner1">Show Banner 1</button>
+            <button class="btn btn-warning" id="slideToggleBanner2">Slide Toggle Banner 2</button>
+            <button class="btn" id="fadeToggleBanner3">Fade Toggle Banner 3</button>
+            <button class="btn" id="startRotation">Start Auto-Rotation</button>
+            <button class="btn btn-danger" id="stopRotation">Stop Auto-Rotation</button>
+        </div>
+
+        <!-- Static Banners Section -->
+        <div id="staticBanners">
+            <div class="banner banner-1" id="banner1">
+                <h2>🎉 Summer Sale!</h2>
+                <p>Get up to 50% off on all electronics</p>
+                <p class="code">Code: SUMMER50</p>
+            </div>
+
+            <div class="banner banner-2" id="banner2">
+                <h2>💝 Valentine's Special</h2>
+                <p>Buy 1 Get 1 Free on selected items</p>
+                <p class="code">Code: LOVE2024</p>
+            </div>
+
+            <div class="banner banner-3" id="banner3">
+                <h2>🚀 Flash Sale!</h2>
+                <p>Limited time offer - 24 hours only</p>
+                <p class="code">Code: FLASH24</p>
+            </div>
+        </div>
+
+        <!-- Auto-Rotating Banners Section -->
+        <div class="rotation-indicator">
+            <strong>Auto-Rotating Banner:</strong> <span id="rotationStatus">Stopped</span>
+        </div>
+
+        <div class="banners-container" id="rotatingContainer">
+            <div class="banner banner-1 rotating-banner active" data-banner="1">
+                <h2>🎁 New Customer Offer</h2>
+                <p>Get 20% off your first purchase</p>
+                <p class="code">Code: WELCOME20</p>
+            </div>
+
+            <div class="banner banner-4 rotating-banner" data-banner="2">
+                <h2>📱 App Exclusive Deal</h2>
+                <p>Download our app and save extra 15%</p>
+                <p class="code">Code: APP15</p>
+            </div>
+
+            <div class="banner banner-5 rotating-banner" data-banner="3">
+                <h2>🏆 Loyalty Rewards</h2>
+                <p>Earn double points on every purchase</p>
+                <p class="code">Code: LOYAL2X</p>
+            </div>
+
+            <div class="banner banner-2 rotating-banner" data-banner="4">
+                <h2>🌟 Weekend Special</h2>
+                <p>Free shipping on orders above $50</p>
+                <p class="code">Code: FREESHIP</p>
+            </div>
+
+            <div class="banner banner-3 rotating-banner" data-banner="5">
+                <h2>🎯 Clearance Sale</h2>
+                <p>Up to 70% off on last season items</p>
+                <p class="code">Code: CLEAR70</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
