@@ -1,0 +1,105 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Rahul Sharma",
+      "section": "A",
+      "marks": 85,
+      "grade": "A",
+      "email": "rahul@student.com"
+    },
+    {
+      "id": 2,
+      "name": "Priya Patel",
+      "section": "B",
+      "marks": 92,
+      "grade": "A+",
+      "email": "priya@student.com"
+    },
+    {
+      "id": 3,
+      "name": "Amit Kumar",
+      "section": "A",
+      "marks": 78,
+      "grade": "B+",
+      "email": "amit@student.com"
+    },
+    {
+      "id": 4,
+      "name": "Sneha Reddy",
+      "section": "C",
+      "marks": 88,
+      "grade": "A",
+      "email": "sneha@student.com"
+    },
+    {
+      "id": 5,
+      "name": "Vikram Singh",
+      "section": "B",
+      "marks": 65,
+      "grade": "C",
+      "email": "vikram@student.com"
+    },
+    {
+      "name": "Brajdeep",
+      "section": "K",
+      "marks": 99,
+      "grade": "A+",
+      "id": 6,
+      "email": "brajdeep@student.com"
+    },
+    {
+      "name": "Nitin Rathor",
+      "section": "K",
+      "marks": 100,
+      "grade": "A+",
+      "id": 7,
+      "email": "Nitin.rathor@student.com"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "teacher1",
+      "password": "teacher123",
+      "name": "Mr. John Smith",
+      "role": "teacher",
+      "email": "john.smith@school.com"
+    },
+    {
+      "id": 2,
+      "username": "teacher2",
+      "password": "teacher123",
+      "name": "Ms. Sarah Johnson",
+      "role": "teacher",
+      "email": "sarah.johnson@school.com"
+    },
+    {
+      "id": 3,
+      "username": "rahul",
+      "password": "student123",
+      "name": "Rahul Sharma",
+      "role": "student",
+      "email": "rahul@student.com",
+      "studentId": 1
+    },
+    {
+      "id": 4,
+      "username": "priya",
+      "password": "student123",
+      "name": "Priya Patel",
+      "role": "student",
+      "email": "priya@student.com",
+      "studentId": 2
+    },
+    {
+      "id": 5,
+      "username": "amit",
+      "password": "student123",
+      "name": "Amit Kumar",
+      "role": "student",
+      "email": "amit@student.com",
+      "studentId": 3
+    }
+  ]
+}
